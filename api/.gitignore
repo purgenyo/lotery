@@ -1,0 +1,5 @@
+/var/cache/*
+/var/test/*
+
+/var/
+/vendor/

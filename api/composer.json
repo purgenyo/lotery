@@ -1,0 +1,33 @@
+{
+    "name": "app/prize",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "scripts": {
+        "test-coverage": "XDEBUG_MODE=coverage phpunit --colors=always",
+        "psalm": "psalm --config=psalm.xml",
+        "lint": "phplint",
+        "php-cs-fixer": "php-cs-fixer --config=.php-cs-fixer.php --allow-risky=yes"
+    },
+    "require": {
+        "php": "8.1.5",
+        "symfony/uid": "^6.0",
+        "doctrine/orm": "^2.12",
+        "symfony/cache": "^6.0",
+        "doctrine/migrations": "^3.5",
+        "symfony/dependency-injection": "^6.0",
+        "symfony/config": "^6.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "vimeo/psalm": "^4.22",
+        "weirdan/doctrine-psalm-plugin": "^2.3",
+        "psalm/plugin-phpunit": "^0.16.1",
+        "phpunit/phpunit": "^9.5",
+        "overtrue/phplint": "^5.1",
+        "dg/bypass-finals": "^1.3"
+    }
+}
