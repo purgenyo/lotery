@@ -6,5 +6,5 @@ namespace App\Auth\Contract;
 
 interface UserIdentityInterface
 {
-    public function getUserIdentity(): string;
+    public function getUserIdentity(): ?string;
 }

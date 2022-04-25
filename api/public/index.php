@@ -2,9 +2,20 @@
 
 declare(strict_types=1);
 
-require_once dirname(__DIR__) . '/vendor/autoload.php';
+use App\Gateway\CheckUserIdentityDecorator;
 
-/** @var \Doctrine\ORM\EntityManagerInterface $entityManager */
-$entityManager = require_once '../config/db.php';
-$containerBuilder = require_once '../config/container-config.php';
-$containerBuilder->set(\Doctrine\ORM\EntityManagerInterface::class, $entityManager);
+$container = require_once __DIR__ . '/../config/bootstrap.php';
+
+$routes = [
+    'api/v1/generate/prize' => CheckUserIdentityDecorator::class,
+];
+
+foreach ($routes as $route => $gateway) {
+    header('Content-Type: application/json; charset=utf-8');
+    /** @psalm-suppress MixedArgument */
+    if (str_contains($_SERVER['REQUEST_URI'] ?? '-1', $route)) {
+        /** @var \App\Gateway\Contract\HandleRequestInterface $handler */
+        $handler = $container->get($gateway);
+        echo $handler->handleRequest();
+    }
+}

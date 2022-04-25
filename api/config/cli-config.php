@@ -1,7 +1,6 @@
 <?php
 
-require_once dirname(__DIR__) . '/vendor/autoload.php';
-
+$container = require_once dirname(__DIR__) . '/config/bootstrap.php';
 return \Doctrine\ORM\Tools\Console\ConsoleRunner::createHelperSet(
-	require_once __DIR__ . '/db.php'
+	$container->get(\Doctrine\ORM\EntityManagerInterface::class)
 );

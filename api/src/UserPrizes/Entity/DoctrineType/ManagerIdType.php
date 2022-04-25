@@ -13,7 +13,7 @@ use Doctrine\DBAL\Types\GuidType;
  */
 final class ManagerIdType extends GuidType
 {
-    public const NAME = 'prize_manager_id_type';
+    public const NAME = 'UserPrizes_manager_id_type';
 
     public function convertToDatabaseValue($value, AbstractPlatform $platform): mixed
     {

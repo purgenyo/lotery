@@ -1,2 +1,4 @@
 SHELL=/bin/sh
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+*/10 * * * * /usr/local/bin/php /app/public/console.php 'App\UserPrizes\Console\SendMoneyPrizesToUsers'

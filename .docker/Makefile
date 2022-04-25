@@ -40,14 +40,14 @@ clear:
 docker-build:
 	docker-compose build --no-cache
 
-docker-up:
+up:
 	docker-compose up -d
 
 permissions:
 	docker run --rm -v ${PWD}/../api:/app -w /app alpine chmod 777 var/cache var/test
 
 test-ab:
-	docker-compose run --rm ab -k -c 1500 -n 10000 http://lotery-nginx/
+	docker-compose run --rm ab -k -c 1500 -n 10000 http://lotery-nginx/api/v1/generate/prize
 
 migrate:
 	docker-compose run --rm api vendor/bin/doctrine-migrations migrations:migrate --allow-no-migration --no-interaction
