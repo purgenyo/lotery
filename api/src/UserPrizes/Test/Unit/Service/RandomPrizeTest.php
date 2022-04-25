@@ -46,7 +46,9 @@ final class RandomPrizeTest extends TestCase
 
         $result = $randomPrize->createAndGetRandomPrize();
         self::assertArrayHasKey('key', $result);
-        self::assertArrayHasKey('test', $result['key']);
-        self::assertEquals('item', $result['key']['test']);
+        /** @var array $result */
+        $result = $result['key'] ?? [];
+        self::assertArrayHasKey('test', $result);
+        self::assertEquals('item', $result['test'] ?? []);
     }
 }

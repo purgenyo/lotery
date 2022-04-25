@@ -6,5 +6,5 @@ namespace App\UserPrizes\Console;
 
 interface RunConsoleCommand
 {
-    public function runCommand();
+    public function runCommand(): void;
 }

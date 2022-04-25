@@ -7,7 +7,6 @@ namespace App\UserPrizes\Console;
 use App\UserPrizes\Command\SendMoneyPrizeToUser\Command;
 use App\UserPrizes\Command\SendMoneyPrizeToUser\Handler;
 use App\UserPrizes\Entity\Manager;
-use App\UserPrizes\Entity\MoneyPrize\MoneyPrize;
 use Doctrine\ORM\EntityManagerInterface;
 
 final class SendMoneyPrizesToUsers implements RunConsoleCommand
@@ -32,7 +31,6 @@ final class SendMoneyPrizesToUsers implements RunConsoleCommand
 
         /** @var Manager $manager */
         foreach ($prizes as $manager) {
-            /** @var MoneyPrize $moneyPrize */
             foreach ($manager->getMoneyPrizes() as $moneyPrize) {
                 $this->handler->handle(
                     new Command(
